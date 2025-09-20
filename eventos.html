@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Música Infinita - Eventos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #0d1b2a; color: #e0e1dd; }
+    header { background-color: #1b263b; }
+    header h1 { color: #00aaff; font-weight: bold; }
+    nav a { color: #e0e1dd !important; }
+    nav a.active, nav a:hover { color: #00aaff !important; font-weight: bold; }
+    .card { background-color: #1b263b; border: none; color: #e0e1dd; transition: transform 0.3s; }
+    .card:hover { transform: scale(1.05); }
+    footer { background-color: #1b263b; padding: 15px; text-align: center; color: #fff; font-weight: bold; margin-top: 40px; }
+  </style>
+</head>
+<body>
+  <header class="p-3 text-center">
+    <h1>🎵 Música Infinita</h1>
+    <nav class="nav justify-content-center">
+      <a class="nav-link" href="index.html">Inicio</a>
+      <a class="nav-link" href="artistas.html">Artistas</a>
+      <a class="nav-link" href="albumes.html">Álbumes</a>
+      <a class="nav-link active" href="eventos.html">Eventos</a>
+    </nav>
+  </header>
+
+  <section class="container py-5">
+    <h2 class="text-center mb-4 text-primary">Próximos Conciertos en San Salvador</h2>
+    <div id="eventos-lista" class="row g-4">
+      <!-- Los conciertos simulados se cargarán aquí -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Música Infinita | Integrantes: Mario Hernandez y Esmeralda García
+  </footer>
+
+  <!-- Modales de eventos -->
+  <div id="modales-container"></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Simulación de datos de conciertos
+    const conciertos = [
+      {
+        id: 1,
+        artista: "Mario Hernandez y La Banda Azul",
+        fecha: "2025-10-05",
+        lugar: "Teatro Nacional",
+        descripcion: "Un espectáculo lleno de energía y música en vivo. ¡No te lo pierdas!",
+        imagen: "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=800&q=60"
+      },
+      {
+        id: 2,
+        artista: "Electro Vibes",
+        fecha: "2025-10-12",
+        lugar: "Parque Cuscatlán",
+        descripcion: "Electro Vibes trae una noche de música electrónica y luces impresionantes.",
+        imagen: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=60"
+      },
+      {
+        id: 3,
+        artista: "Rock Salvador",
+        fecha: "2025-10-20",
+        lugar: "Arena El Salvador",
+        descripcion: "Una noche de rock salvadoreño con tus bandas favoritas en vivo.",
+        imagen: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=60"
+      }
+    ];
+
+    const lista = document.getElementById('eventos-lista');
+    const modalesContainer = document.getElementById('modales-container');
+
+    conciertos.forEach(evento => {
+      // Crear tarjeta
+      const div = document.createElement('div');
+      div.classList.add('col-md-4');
+      div.innerHTML = `
+        <div class="card">
+          <img src="${evento.imagen}" class="card-img-top" alt="${evento.artista}">
+          <div class="card-body">
+            <h5 class="card-title">${evento.artista}</h5>
+            <p class="card-text">${evento.lugar} - ${new Date(evento.fecha).toLocaleDateString()}</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal${evento.id}">Ver Evento</button>
+          </div>
+        </div>
+      `;
+      lista.appendChild(div);
+
+      // Crear modal
+      const modalDiv = document.createElement('div');
+      modalDiv.innerHTML = `
+        <div class="modal fade" id="modal${evento.id}" tabindex="-1" aria-labelledby="modalLabel${evento.id}" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel${evento.id}">${evento.artista}</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+              </div>
+              <div class="modal-body">
+                <img src="${evento.imagen}" class="img-fluid mb-3 rounded" alt="${evento.artista}">
+                <p><strong>Lugar:</strong> ${evento.lugar}</p>
+                <p><strong>Fecha:</strong> ${new Date(evento.fecha).toLocaleDateString()}</p>
+                <p>${evento.descripcion}</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      modalesContainer.appendChild(modalDiv);
+    });
+  </script>
+</body>
+</html>

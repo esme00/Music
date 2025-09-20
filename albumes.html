@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Música Infinita - Álbumes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #0d1b2a; color: #e0e1dd; }
+    header { background-color: #1b263b; }
+    header h1 { color: #00aaff; font-weight: bold; }
+    nav a { color: #e0e1dd !important; }
+    nav a.active, nav a:hover { color: #00aaff !important; font-weight: bold; }
+    .card { background-color: #1b263b; border: none; color: #e0e1dd; transition: transform 0.3s; }
+    .card:hover { transform: scale(1.05); }
+    footer { background-color: #1b263b; padding: 15px; text-align: center; color: #fff; font-weight: bold; margin-top: 40px; }
+  </style>
+</head>
+<body>
+  <header class="p-3 text-center">
+    <h1>🎵 Música Infinita</h1>
+    <nav class="nav justify-content-center">
+      <a class="nav-link" href="index.html">Inicio</a>
+      <a class="nav-link" href="artistas.html">Artistas</a>
+      <a class="nav-link active" href="albumes.html">Álbumes</a>
+      <a class="nav-link" href="eventos.html">Eventos</a>
+    </nav>
+  </header>
+
+  <section class="container py-5">
+    <h2 class="text-center mb-4 text-primary">Álbumes Populares</h2>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card p-3 text-center">
+          <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=60" class="card-img-top rounded" alt="Álbum 1">
+          <h3 class="mt-3">Álbum 1</h3>
+          <p>Un viaje musical que combina sonidos electrónicos y acústicos.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-3 text-center">
+          <img src="https://images.unsplash.com/photo-1485579149621-3123dd979885?auto=format&fit=crop&w=800&q=60" class="card-img-top rounded" alt="Álbum 2">
+          <h3 class="mt-3">Álbum 2</h3>
+          <p>Una propuesta fresca con letras profundas y ritmos cautivantes.</p>
+        </div>
+      </div>
+      
+    </div>
+    <footer>
+    © 2025 Música Infinita | Integrantes: Mario Hernadez y Esmeralda García
+  </footer>
